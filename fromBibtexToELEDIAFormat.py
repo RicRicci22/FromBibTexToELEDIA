@@ -61,10 +61,16 @@ def fromBibtoEledia(arguments):
                         for a in range(len(first_names)):
                             string_names += " "+first_names[a]
                         for aa in range(len(last_names)):
+<<<<<<< HEAD
                             string_names += " " + \
                                 last_names[aa].replace(
                                     '{', '').replace('}', '')
             else:
+=======
+                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
+
+            else: # PIù DI DUE AUTORI
+>>>>>>> b9b91447b51fc4460c8ae7e194b391a698183599
                 for aut in range(len(author)):
                     if aut == 0:
                         first_names = author[aut].bibtex_first_names
@@ -75,6 +81,7 @@ def fromBibtoEledia(arguments):
                             else:
                                 string_names += " "+first_names[a]
                         for aa in range(len(last_names)):
+<<<<<<< HEAD
                             string_names += " " + \
                                 last_names[aa].replace(
                                     '{', '').replace('}', '')
@@ -84,6 +91,21 @@ def fromBibtoEledia(arguments):
                         string_names += ","
                         first_names = author[aut].bibtex_first_names
                         last_names = author[aut].last_names
+=======
+                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                    elif aut==len(author)-1:
+                            string_names+= ", and"
+                            first_names=author[aut].bibtex_first_names
+                            last_names=author[aut].last_names
+                            for a in range(len(first_names)):
+                                string_names+=" "+first_names[a]
+                            for aa in range(len(last_names)):
+                                string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                    else:
+                        string_names+= ", "
+                        first_names=author[aut].bibtex_first_names
+                        last_names=author[aut].last_names
+>>>>>>> b9b91447b51fc4460c8ae7e194b391a698183599
                         for a in range(len(first_names)):
                             string_names += " "+first_names[a]
                         for aa in range(len(last_names)):

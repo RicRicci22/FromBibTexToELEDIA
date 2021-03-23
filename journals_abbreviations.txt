@@ -261,3 +261,4 @@ IEEE/ECS Electrochemical and Solid-State Letters;IEEE/ECS Electrochem. Solid-Sta
 IEEE/OSA Journal of Display Technology;IEEE/OSA J. Display Technol.
 IEEE/OSA Journal of Lightwave Technology;J. Lightw. Technol.
 IEEE/TMS Journal of Electronic Materials;IEEE/TMS J. Electron. Mater.
+IEEE Transactions on Computational Imaging;IEEE Trans. Comput. Imag.
