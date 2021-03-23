@@ -39,4 +39,7 @@ def fromBibtoEledia(arguments):
 
 
 if __name__ == '__main__':
-    fromBibtoEledia(sys.argv[1:])
+    arugment=["prova.txt","bib_formatted.txt"] 
+    fromBibtoEledia(arugment)
+    print("ok")
+    #fromBibtoEledia(sys.argv[1:])
