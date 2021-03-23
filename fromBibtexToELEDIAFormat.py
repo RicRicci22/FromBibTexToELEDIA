@@ -19,30 +19,21 @@ def fromBibtoEledia(arguments):
 
     output_file_name = 'bib_formatted.txt'
     f = open(output_file_name, 'w+')  #create file if it doesn't exist and open it in (over)write mode [it overwrites the file if it already exists]
-    
-    
-    for bib_data in bib_datas:
-<<<<<<< HEAD
-        print("--------------")
-        a=bib_data.entries
-        print(bib_data.entries)
-
+    for e in bib_data.entries:
+        fields=bib_data.entries[e].fields
+        try:
+            author=bib_data.entries[e].persons['author']
+        except Exception:
+            try:
+                author=bib_data.entries[e].persons['editor']
+            except Exception:
+                print("Error: 'author'/'editor' filed not found")
+                quit()
+        #print(fields['title'])
+        f.write(f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}]\n")
+        #f.write(bib_data.entries)
+    f.close()
 
 if __name__ == '__main__':
     fromBibtoEledia(sys.argv[1:])
-=======
-        for e in bib_data.entries:
-            fields=bib_data.entries[e].fields
-            try:
-                author=bib_data.entries[e].persons['author']
-            except Exception:
-                try:
-                    author=bib_data.entries[e].persons['editor']
-                except Exception:
-                    print("Error: 'author'/'editor' filed not found")
-                    quit()
-            #print(fields['title'])
-            f.write(f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}]\n")
-            #f.write(bib_data.entries)
-    f.close()
->>>>>>> 107ac539f5000d58be62058d37c379749d95ecf6
+
