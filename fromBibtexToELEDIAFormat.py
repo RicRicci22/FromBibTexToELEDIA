@@ -28,8 +28,17 @@ def fromBibtoEledia(arguments):
                     print("Error: 'author'/'editor' filed not found")
                     quit()
             if len(author) == 1:
-                string_names = "G. Oliveri and A. Massa"
-            elif len(author) == 1:
+                first_names=author[0].bibtex_first_names
+                last_names=author[0].last_names
+                for a in range(len(first_names)):
+                    if a==0:
+                        string_names=first_names[a]
+                    else:
+                        string_names+=" "+first_names[a]
+                for aa in range(len(last_names)):
+                    string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                print(string_names)
+            elif len(author) == 2:
                 string_names = "G. Oliveri and A. Massa"
             else:
                 string_names = "G. Oliveri and A. Massa"
