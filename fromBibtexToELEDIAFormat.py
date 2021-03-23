@@ -26,6 +26,7 @@ def fromBibtoEledia(arguments):
                 except Exception:
                     print("Error: 'author'/'editor' filed not found")
                     quit()
+            ## DA QUA FUNZIONE
             if len(author) == 1:
                 first_names = author[0].bibtex_first_names
                 last_names = author[0].last_names
@@ -38,10 +39,49 @@ def fromBibtoEledia(arguments):
                     string_names += " " + \
                         last_names[aa].replace('{', '').replace('}', '')
                 print(string_names)
-            elif len(author) == 2:
-                string_names = "G. Oliveri and A. Massa"
+
+            elif len(author) == 2: #DUE AUTORI
+                for aut in range(len(author)):
+                    if aut==0:
+                        first_names=author[aut].bibtex_first_names
+                        last_names=author[aut].last_names
+                        for a in range(len(first_names)):
+                            if a==0:
+                                string_names=first_names[a]
+                            else:
+                                string_names+=" "+first_names[a]
+                        for aa in range(len(last_names)):
+                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                    else:
+                        string_names+= " and"
+                        first_names=author[aut].bibtex_first_names
+                        last_names=author[aut].last_names
+                        for a in range(len(first_names)):
+                            string_names+=" "+first_names[a]
+                        for aa in range(len(last_names)):
+                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
             else:
-                string_names = "G. Oliveri and A. Massa"
+                for aut in range(len(author)):
+                    if aut==0:
+                        first_names=author[aut].bibtex_first_names
+                        last_names=author[aut].last_names
+                        for a in range(len(first_names)):
+                            if a==0:
+                                string_names=first_names[a]
+                            else:
+                                string_names+=" "+first_names[a]
+                        for aa in range(len(last_names)):
+                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                    elif aut==len(author)-1:
+
+                    else:
+                        string_names+= ","
+                        first_names=author[aut].bibtex_first_names
+                        last_names=author[aut].last_names
+                        for a in range(len(first_names)):
+                            string_names+=" "+first_names[a]
+                        for aa in range(len(last_names)):
+                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
 
             # WRITE DATA ON FILE
             # Get volume
@@ -49,7 +89,11 @@ def fromBibtoEledia(arguments):
             number = support_functions.get_number(fields['number'])
             pages = support_functions.get_pages(fields['pages'])
             f.write(
+<<<<<<< HEAD
                 f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}, {number}, {pages}\n")
+=======
+                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}\n\n")
+>>>>>>> 2558bef432b18a2bda64163205b19aa5d836617c
     f.close()
 
 
