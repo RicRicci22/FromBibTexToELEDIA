@@ -42,6 +42,17 @@ def fromBibtoEledia(arguments):
             doi = support_functions.get_doi(fields['doi'])
             month = support_functions.extract_month(list_articles_plain[i*5])
             year = support_functions.get_year(fields['year'])
+<<<<<<< HEAD
+=======
+            f.write(
+                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
+            i += 1
+            try:
+                j_abbrevation=abbr[fields['journal']]
+            except Exception:
+                    j_abbrevation=input(f"Problem: {fields['journal']} abbrevation not found \n Pleas insert the abbrevation:")
+                    support_functions.update_journal_abbrevations_file(input_path_abbrevation,fields['journal'],j_abbrevation)
+>>>>>>> ec1974292cd8882784c952fe5f1deb0533c7733e
             f.write(
                 f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
             i += 1
