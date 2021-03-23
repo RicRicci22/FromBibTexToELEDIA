@@ -161,3 +161,9 @@ def get_author_name(author):
                             '{', '').replace('}', '')
 
     return string_names
+
+def update_journal_abbrevations_file(file, journal_name, abbrevation):
+    file_abbr = open(file, 'a')
+    strig_to_append="\n"+journal_name+";"+abbrevation
+    file_abbr.write(strig_to_append)
+    file_abbr.close()

@@ -13,7 +13,8 @@ def fromBibtoEledia(arguments):
     input_path_plain = os.path.abspath(arguments[3])
     list_articles_plain = support_functions.import_plain_text(input_path_plain)
     # Get abbreviations (dictionary key->complete name of journal, value -> abbreviation)
-    abbr = support_functions.import_abbreviations(arguments[2])
+    input_path_abbrevation= os.path.abspath(arguments[2])
+    abbr = support_functions.import_abbreviations(input_path_abbrevation)
 
     output_path = arguments[1]
     # create file if it doesn't exist and open it in (over)write mode [it overwrites the file if it already exists]
@@ -39,11 +40,22 @@ def fromBibtoEledia(arguments):
             number = support_functions.get_number(fields['number'])
             pages = support_functions.get_pages(fields['pages'])
             doi = support_functions.get_doi(fields['doi'])
+<<<<<<< HEAD
             month = support_functions.extract_month(list_articles_plain[i*5])
             year = support_functions.get_year(fields['year'])
             f.write(
                 f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
             i += 1
+=======
+            try:
+                j_abbrevation=abbr[fields['journal']]
+            except Exception:
+                    j_abbrevation=input(f"Problem: {fields['journal']} abbrevation not found \n Pleas insert the abbrevation:")
+                    support_functions.update_journal_abbrevations_file(input_path_abbrevation,fields['journal'],j_abbrevation)
+            f.write(
+                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {j_abbrevation}, {volume}{number}{pages}{doi}\n")
+            
+>>>>>>> 672e8f08423b336ca54d9b245e429510b69cb3b7
     f.close()
 
 
