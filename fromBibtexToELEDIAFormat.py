@@ -38,7 +38,6 @@ def fromBibtoEledia(arguments):
                 for aa in range(len(last_names)):
                     string_names += " " + \
                         last_names[aa].replace('{', '').replace('}', '')
-                print(string_names)
 
             elif len(author) == 2:  # DUE AUTORI
                 for aut in range(len(author)):
