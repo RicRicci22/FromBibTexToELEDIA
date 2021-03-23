@@ -96,11 +96,7 @@ def fromBibtoEledia(arguments):
             number = support_functions.get_number(fields['number'])
             pages = support_functions.get_pages(fields['pages'])
             f.write(
-<<<<<<< HEAD
                 f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}, {number}, {pages}\n")
-=======
-                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}\n\n")
->>>>>>> 2558bef432b18a2bda64163205b19aa5d836617c
     f.close()
 
 
