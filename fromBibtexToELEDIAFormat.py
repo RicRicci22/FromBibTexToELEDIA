@@ -61,7 +61,27 @@ def fromBibtoEledia(arguments):
                         for aa in range(len(last_names)):
                             string_names+=" "+last_names[aa].replace('{','').replace('}','')
             else:
-                string_names = "PUTTANA"
+                for aut in range(len(author)):
+                    if aut==0:
+                        first_names=author[aut].bibtex_first_names
+                        last_names=author[aut].last_names
+                        for a in range(len(first_names)):
+                            if a==0:
+                                string_names=first_names[a]
+                            else:
+                                string_names+=" "+first_names[a]
+                        for aa in range(len(last_names)):
+                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                    elif aut==len(author)-1:
+
+                    else:
+                        string_names+= ","
+                        first_names=author[aut].bibtex_first_names
+                        last_names=author[aut].last_names
+                        for a in range(len(first_names)):
+                            string_names+=" "+first_names[a]
+                        for aa in range(len(last_names)):
+                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
 
             # WRITE DATA ON FILE
             f.write(
