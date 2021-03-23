@@ -9,7 +9,7 @@ def fromBibtoEledia(arguments):
     input_path = os.path.abspath(arguments[0])
     # Get unformatted citations
     bib_datas = support_functions.import_citations(input_path)
-    # Get abbreviations
+    # Get abbreviations (dictionary key->complete name of journal, value -> abbreviation)
     abbr = support_functions.import_abbreviations(arguments[2])
 
     output_path = arguments[1]
@@ -18,6 +18,7 @@ def fromBibtoEledia(arguments):
     for bib_data in bib_datas:
         for e in bib_data.entries:
             fields = bib_data.entries[e].fields
+            print(bib_data.entries[e].persons)
             try:
                 author = bib_data.entries[e].persons['author']
             except Exception:
