@@ -52,3 +52,89 @@ def get_pages(page_field):
         return ('pp. ' + page_field+', ')
     else:
         return ''
+
+
+# def extract_month():
+
+
+def get_doi(doi_field):
+    if(doi_field != ''):
+        # Doi is present
+        return ('(DOI:' + doi_field + ').')
+    else:
+        return ''
+
+
+def get_author_name(author):
+    if len(author) == 1:
+        first_names = author[0].bibtex_first_names
+        last_names = author[0].last_names
+        for a in range(len(first_names)):
+            if a == 0:
+                string_names = first_names[a]
+            else:
+                string_names += " "+first_names[a]
+        for aa in range(len(last_names)):
+            string_names += " " + \
+                last_names[aa].replace('{', '').replace('}', '')
+
+    elif len(author) == 2:  # DUE AUTORI
+        for aut in range(len(author)):
+            if aut == 0:
+                first_names = author[aut].bibtex_first_names
+                last_names = author[aut].last_names
+                for a in range(len(first_names)):
+                    if a == 0:
+                        string_names = first_names[a]
+                    else:
+                        string_names += " "+first_names[a]
+                for aa in range(len(last_names)):
+                    string_names += " " + \
+                        last_names[aa].replace(
+                            '{', '').replace('}', '')
+            else:
+                string_names += " and"
+                first_names = author[aut].bibtex_first_names
+                last_names = author[aut].last_names
+                for a in range(len(first_names)):
+                    string_names += " "+first_names[a]
+                for aa in range(len(last_names)):
+                    string_names += " " + \
+                        last_names[aa].replace(
+                            '{', '').replace('}', '')
+    else:
+        for aut in range(len(author)):
+            if aut == 0:
+                first_names = author[aut].bibtex_first_names
+                last_names = author[aut].last_names
+                for a in range(len(first_names)):
+                    if a == 0:
+                        string_names = first_names[a]
+                    else:
+                        string_names += " "+first_names[a]
+                for aa in range(len(last_names)):
+                    string_names += " " + \
+                        last_names[aa].replace(
+                            '{', '').replace('}', '')
+            elif aut == len(author)-1:
+                string_names += ", and"
+                first_names = author[aut].bibtex_first_names
+                last_names = author[aut].last_names
+                for a in range(len(first_names)):
+                    string_names += " "+first_names[a]
+                for aa in range(len(last_names)):
+                    string_names += " " + \
+                        last_names[aa].replace(
+                            '{', '').replace('}', '')
+            else:
+                string_names += ", "
+                first_names = author[aut].bibtex_first_names
+                last_names = author[aut].last_names
+                for a in range(len(first_names)):
+                    string_names += " "+first_names[a]
+                for aa in range(len(last_names)):
+                    string_names += " " + \
+                        last_names[aa].replace(
+                            '{', '').replace('}', '')
+
+    return string_names
