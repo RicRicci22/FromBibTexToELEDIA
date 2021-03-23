@@ -26,7 +26,7 @@ def fromBibtoEledia(arguments):
                 except Exception:
                     print("Error: 'author'/'editor' filed not found")
                     quit()
-            ## DA QUA FUNZIONE
+            # DA QUA FUNZIONE
             if len(author) == 1:
                 first_names = author[0].bibtex_first_names
                 last_names = author[0].last_names
@@ -101,7 +101,7 @@ def fromBibtoEledia(arguments):
             number = support_functions.get_number(fields['number'])
             pages = support_functions.get_pages(fields['pages'])
             f.write(
-                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}, {number}, {pages}\n")
+                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}\n")
     f.close()
 
 
