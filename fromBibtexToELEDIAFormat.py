@@ -7,18 +7,10 @@ import support_functions
 def fromBibtoEledia(arguments):
     # Get the absolute path of file "prova.txt" that is in folder
     input_path = os.path.abspath(arguments[0])
-    my_file = open(input_path)
-    strings = my_file.read().split('@')
-    bib_datas = []
+    # Get unformatted citations
+    bib_datas = support_functions.import_citations(input_path)
     # Get abbreviations
     abbr = support_functions.import_abbreviations(arguments[2])
-    for stringa in strings:
-        if stringa == "":
-            continue
-        stringa = '@'+stringa
-        bib_data = parse_string(stringa, "bibtex")
-        bib_datas.append(bib_data)
-    my_file.close()
 
     output_path = arguments[1]
     # create file if it doesn't exist and open it in (over)write mode [it overwrites the file if it already exists]
@@ -49,10 +41,10 @@ def fromBibtoEledia(arguments):
                 string_names = "G. Oliveri and A. Massa"
             else:
                 string_names = "G. Oliveri and A. Massa"
-            # AUTHORS
+
+            # WRITE DATA ON FILE
             f.write(
                 f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}\n")
-            # f.write(bib_data.entries)
     f.close()
 
 
