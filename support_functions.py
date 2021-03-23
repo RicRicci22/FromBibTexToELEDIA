@@ -1,3 +1,6 @@
+from pybtex.database import parse_string
+
+
 def import_citations(path_citations):
     # This function creates a list of pybtex object. Every pybtex object is a citation
     my_file = open(path_citations)
