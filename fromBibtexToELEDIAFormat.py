@@ -35,9 +35,14 @@ def fromBibtoEledia(arguments):
                 except Exception:
                     print("Error: 'author'/'editor' filed not found")
                     quit()
-            # print(fields['title'])
+            if len(author)==1:
+                string_names="G. Oliveri and A. Massa"
+            elif len(author)==1:
+                string_names="G. Oliveri and A. Massa"
+            else:
+                string_names="G. Oliveri and A. Massa"
             f.write(
-                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}]\n")
+                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}\n")
             # f.write(bib_data.entries)
     f.close()
 
