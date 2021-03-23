@@ -40,13 +40,11 @@ def fromBibtoEledia(arguments):
             number = support_functions.get_number(fields['number'])
             pages = support_functions.get_pages(fields['pages'])
             doi = support_functions.get_doi(fields['doi'])
-<<<<<<< HEAD
             month = support_functions.extract_month(list_articles_plain[i*5])
             year = support_functions.get_year(fields['year'])
             f.write(
                 f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
             i += 1
-=======
             try:
                 j_abbrevation=abbr[fields['journal']]
             except Exception:
@@ -55,7 +53,6 @@ def fromBibtoEledia(arguments):
             f.write(
                 f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {j_abbrevation}, {volume}{number}{pages}{doi}\n")
             
->>>>>>> 672e8f08423b336ca54d9b245e429510b69cb3b7
     f.close()
 
 
