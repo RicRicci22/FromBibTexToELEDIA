@@ -60,7 +60,8 @@ def fromBibtoEledia(arguments):
                             string_names+=" "+first_names[a]
                         for aa in range(len(last_names)):
                             string_names+=" "+last_names[aa].replace('{','').replace('}','')
-            else:
+
+            else: # PIù DI DUE AUTORI
                 for aut in range(len(author)):
                     if aut==0:
                         first_names=author[aut].bibtex_first_names
@@ -73,9 +74,15 @@ def fromBibtoEledia(arguments):
                         for aa in range(len(last_names)):
                             string_names+=" "+last_names[aa].replace('{','').replace('}','')
                     elif aut==len(author)-1:
-
+                            string_names+= ", and"
+                            first_names=author[aut].bibtex_first_names
+                            last_names=author[aut].last_names
+                            for a in range(len(first_names)):
+                                string_names+=" "+first_names[a]
+                            for aa in range(len(last_names)):
+                                string_names+=" "+last_names[aa].replace('{','').replace('}','')
                     else:
-                        string_names+= ","
+                        string_names+= ", "
                         first_names=author[aut].bibtex_first_names
                         last_names=author[aut].last_names
                         for a in range(len(first_names)):
