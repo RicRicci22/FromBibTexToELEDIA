@@ -1,5 +1,5 @@
 @ARTICLE{6868244,
-author={G. {Oliveri} and N. {Anselmi} and A. {Massa}},
+author={L.G. {Oliveri} and N. {Anselmi} and A. {Massa}},
 journal={IEEE Transactions on Antennas and Propagation}, title={Compressive Sensing Imaging of Non-Sparse 2D Scatterers by a Total-Variation Approach Within the Born Approximation},
 year={2014},
 volume={62},
