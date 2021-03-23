@@ -1,0 +1,15 @@
+[Oliveri.2014] G. Oliveri and A. Massa, "Compressive Sensing Imaging of Non-Sparse 2D Scatterers by a Total-Variation Approach Within the Born Approximation," IEEE Trans. Antennas Propag.
+[Anselmi.2017] G. Oliveri and A. Massa, "Color Compressive Sensing Imaging of Arbitrary-Shaped Scatterers," IEEE Trans. Microw. Theory Techn.
+[Oliveri.2019] G. Oliveri and A. Massa, "Compressive Sensing-Based Born Iterative Method for Tomographic Imaging," IEEE Trans. Microw. Theory Techn.
+[Carlin.2013] G. Oliveri and A. Massa, "Directions-of-Arrival Estimation Through Bayesian Compressive Sensing Strategies," IEEE Trans. Antennas Propag.
+[Poli.2012] G. Oliveri and A. Massa, "Microwave Imaging Within the First-Order Born Approximation by Means of the Contrast-Field Bayesian Compressive Sensing," IEEE Trans. Antennas Propag.
+[Oliveri.2011] G. Oliveri and A. Massa, "A Bayesian-Compressive-Sampling-Based Inversion for Imaging Sparse Scatterers," IEEE Trans. Geosci. Remote Sens.
+[Anselmi.2015] G. Oliveri and A. Massa, "Wavelet-Based Compressive Imaging of Sparse Targets," IEEE Trans. Antennas Propag.
+[Massa.2015] G. Oliveri and A. Massa, "Compressive Sensing in Electromagnetics - A Review," IEEE Antennas Propag. Mag.
+[Anselmi.2018] G. Oliveri and A. Massa, "Iterative Multiresolution Bayesian CS for Microwave Imaging," IEEE Trans. Antennas Propag.
+[Poli.2013] G. Oliveri and A. Massa, "MT – BCS-Based Microwave Imaging Approach Through Minimum-Norm Current Expansion," IEEE Trans. Antennas Propag.
+[Rocca.2017] G. Oliveri and A. Massa, "Single-Snapshot DoA Estimation in Array Antennas With Mutual Coupling Through a Multiscaling BCS Strategy," IEEE Trans. Antennas Propag.
+[Salucci.2018] G. Oliveri and A. Massa, "Planar Array Diagnosis by Means of an Advanced Bayesian Compressive Processing," IEEE Trans. Antennas Propag.
+[Oliveri.2017] G. Oliveri and A. Massa, "Compressive Sensing as Applied to Inverse Problems for Imaging: Theory, Applications, Current Trends, and Open Challenges.," IEEE Antennas Propag. Mag.
+[Poli.2013] G. Oliveri and A. Massa, "Bayesian Compressive Sensing Approaches for the Reconstruction of Two-Dimensional Sparse Scatterers Under TE Illuminations," IEEE Trans. Geosci. Remote Sens.
+[Massa.2015] G. Oliveri and A. Massa, "Guest Editorial: Special Cluster on Compressive Sensing as Applied to Electromagnetics," IEEE Antennas Wireless Propag. Lett.
