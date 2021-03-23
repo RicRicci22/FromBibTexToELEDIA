@@ -16,7 +16,7 @@ pages={5157-5170},
 doi={10.1109/TAP.2014.2344673}}
 @ARTICLE{7829356,
 author={N. {Anselmi} and G. {Oliveri} and M. A. {Hannan} and M. {Salucci} and A. {Massa}},
-journal={IEEE Transactions on Microwave Theory and Techniques}, title={Color Compressive Sensing Imaging of Arbitrary-Shaped Scatterers},
+journal={IEEE Transactions PROVA on Microwave Theory and Techniques}, title={Color Compressive Sensing Imaging of Arbitrary-Shaped Scatterers},
 year={2017},
 volume={65},
 number={6},
