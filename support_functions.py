@@ -28,3 +28,27 @@ def import_abbreviations(path_abbreviations):
         dict_abbr[splitted_line[0]] = splitted_line[1][:-1]
 
     return dict_abbr
+
+
+def get_volume(volume_field):
+    if(volume_field != ''):
+        # Volume is present
+        return ('vol. ' + volume_field)
+    else:
+        return ''
+
+
+def get_number(number_field):
+    if(number_field != ''):
+        # Number is present
+        return ('no. ' + number_field)
+    else:
+        return ''
+
+
+def get_pages(page_field):
+    if(page_field != ''):
+        # Page is present
+        return ('pp. ' + page_field)
+    else:
+        return ''

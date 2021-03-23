@@ -18,7 +18,6 @@ def fromBibtoEledia(arguments):
     for bib_data in bib_datas:
         for e in bib_data.entries:
             fields = bib_data.entries[e].fields
-            #print(bib_data.entries[e].persons)
             try:
                 author = bib_data.entries[e].persons['author']
             except Exception:
@@ -29,15 +28,16 @@ def fromBibtoEledia(arguments):
                     quit()
             ## DA QUA FUNZIONE
             if len(author) == 1:
-                first_names=author[0].bibtex_first_names
-                last_names=author[0].last_names
+                first_names = author[0].bibtex_first_names
+                last_names = author[0].last_names
                 for a in range(len(first_names)):
-                    if a==0:
-                        string_names=first_names[a]
+                    if a == 0:
+                        string_names = first_names[a]
                     else:
-                        string_names+=" "+first_names[a]
+                        string_names += " "+first_names[a]
                 for aa in range(len(last_names)):
-                    string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                    string_names += " " + \
+                        last_names[aa].replace('{', '').replace('}', '')
                 print(string_names)
 
             elif len(author) == 2: #DUE AUTORI
@@ -91,8 +91,16 @@ def fromBibtoEledia(arguments):
                             string_names+=" "+last_names[aa].replace('{','').replace('}','')
 
             # WRITE DATA ON FILE
+            # Get volume
+            volume = support_functions.get_volume(fields['volume'])
+            number = support_functions.get_number(fields['number'])
+            pages = support_functions.get_pages(fields['pages'])
             f.write(
+<<<<<<< HEAD
+                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}, {number}, {pages}\n")
+=======
                 f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}\n\n")
+>>>>>>> 2558bef432b18a2bda64163205b19aa5d836617c
     f.close()
 
 
