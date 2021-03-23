@@ -1,6 +1,7 @@
 from pybtex.database import parse_string
 import os
 import sys
+import support_functions
 
 
 def fromBibtoEledia(arguments):
@@ -9,6 +10,8 @@ def fromBibtoEledia(arguments):
     my_file = open(input_path)
     strings = my_file.read().split('@')
     bib_datas = []
+    # Get abbreviations
+    abbr = support_functions.import_abbreviations(arguments[2])
     for stringa in strings:
         if stringa == "":
             continue
@@ -31,20 +34,21 @@ def fromBibtoEledia(arguments):
                 except Exception:
                     print("Error: 'author'/'editor' filed not found")
                     quit()
-            if len(author)==1:
-                string_names="G. Oliveri and A. Massa"
-            elif len(author)==1:
-                string_names="G. Oliveri and A. Massa"
+            if len(author) == 1:
+                string_names = "G. Oliveri and A. Massa"
+            elif len(author) == 1:
+                string_names = "G. Oliveri and A. Massa"
             else:
-                string_names="G. Oliveri and A. Massa"
+                string_names = "G. Oliveri and A. Massa"
+            # AUTHORS
             f.write(
-                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}\n")
+                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}\n")
             # f.write(bib_data.entries)
     f.close()
 
 
 if __name__ == '__main__':
-    arugment=["prova.txt","bib_formatted.txt"] 
+    arugment = ["prova.txt", "bib_formatted.txt", "journals_abbreviations.txt"]
     fromBibtoEledia(arugment)
     print("ok")
-    #fromBibtoEledia(sys.argv[1:])
+    # fromBibtoEledia(sys.argv[1:])
