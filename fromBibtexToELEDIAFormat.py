@@ -26,7 +26,7 @@ def fromBibtoEledia(arguments):
                 except Exception:
                     print("Error: 'author'/'editor' filed not found")
                     quit()
-            ## DA QUA FUNZIONE
+            # DA QUA FUNZIONE
             if len(author) == 1:
                 first_names = author[0].bibtex_first_names
                 last_names = author[0].last_names
@@ -61,16 +61,10 @@ def fromBibtoEledia(arguments):
                         for a in range(len(first_names)):
                             string_names += " "+first_names[a]
                         for aa in range(len(last_names)):
-<<<<<<< HEAD
                             string_names += " " + \
                                 last_names[aa].replace(
                                     '{', '').replace('}', '')
             else:
-=======
-                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
-
-            else: # PIù DI DUE AUTORI
->>>>>>> b9b91447b51fc4460c8ae7e194b391a698183599
                 for aut in range(len(author)):
                     if aut == 0:
                         first_names = author[aut].bibtex_first_names
@@ -81,31 +75,23 @@ def fromBibtoEledia(arguments):
                             else:
                                 string_names += " "+first_names[a]
                         for aa in range(len(last_names)):
-<<<<<<< HEAD
                             string_names += " " + \
                                 last_names[aa].replace(
                                     '{', '').replace('}', '')
                     elif aut == len(author)-1:
-
-                    else:
-                        string_names += ","
+                        string_names += ", and"
                         first_names = author[aut].bibtex_first_names
                         last_names = author[aut].last_names
-=======
-                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
-                    elif aut==len(author)-1:
-                            string_names+= ", and"
-                            first_names=author[aut].bibtex_first_names
-                            last_names=author[aut].last_names
-                            for a in range(len(first_names)):
-                                string_names+=" "+first_names[a]
-                            for aa in range(len(last_names)):
-                                string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                        for a in range(len(first_names)):
+                            string_names += " "+first_names[a]
+                        for aa in range(len(last_names)):
+                            string_names += " " + \
+                                last_names[aa].replace(
+                                    '{', '').replace('}', '')
                     else:
-                        string_names+= ", "
-                        first_names=author[aut].bibtex_first_names
-                        last_names=author[aut].last_names
->>>>>>> b9b91447b51fc4460c8ae7e194b391a698183599
+                        string_names += ", "
+                        first_names = author[aut].bibtex_first_names
+                        last_names = author[aut].last_names
                         for a in range(len(first_names)):
                             string_names += " "+first_names[a]
                         for aa in range(len(last_names)):
@@ -119,11 +105,7 @@ def fromBibtoEledia(arguments):
             number = support_functions.get_number(fields['number'])
             pages = support_functions.get_pages(fields['pages'])
             f.write(
-<<<<<<< HEAD
-                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}, {number}, {pages}\n")
-=======
-                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}\n\n")
->>>>>>> 2558bef432b18a2bda64163205b19aa5d836617c
+                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}\n")
     f.close()
 
 
