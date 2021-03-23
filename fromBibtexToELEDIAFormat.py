@@ -1,6 +1,7 @@
 from pybtex.database import parse_string
 import os
 import sys
+import support_functions
 
 
 def fromBibtoEledia(arguments):
@@ -9,6 +10,9 @@ def fromBibtoEledia(arguments):
     my_file = open(input_path)
     strings = my_file.read().split('@')
     bib_datas = []
+    # Get abbreviations
+    abbr = support_functions.import_abbreviations(arguments[2])
+    print(abbr)
     for stringa in strings:
         if stringa == "":
             continue
@@ -39,7 +43,7 @@ def fromBibtoEledia(arguments):
 
 
 if __name__ == '__main__':
-    arugment=["prova.txt","bib_formatted.txt"] 
+    arugment = ["prova.txt", "bib_formatted.txt", "journals_abbreviations.txt"]
     fromBibtoEledia(arugment)
     print("ok")
-    #fromBibtoEledia(sys.argv[1:])
+    # fromBibtoEledia(sys.argv[1:])
