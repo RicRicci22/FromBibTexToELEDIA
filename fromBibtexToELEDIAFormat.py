@@ -40,48 +40,56 @@ def fromBibtoEledia(arguments):
                         last_names[aa].replace('{', '').replace('}', '')
                 print(string_names)
 
-            elif len(author) == 2: #DUE AUTORI
+            elif len(author) == 2:  # DUE AUTORI
                 for aut in range(len(author)):
-                    if aut==0:
-                        first_names=author[aut].bibtex_first_names
-                        last_names=author[aut].last_names
+                    if aut == 0:
+                        first_names = author[aut].bibtex_first_names
+                        last_names = author[aut].last_names
                         for a in range(len(first_names)):
-                            if a==0:
-                                string_names=first_names[a]
+                            if a == 0:
+                                string_names = first_names[a]
                             else:
-                                string_names+=" "+first_names[a]
+                                string_names += " "+first_names[a]
                         for aa in range(len(last_names)):
-                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                            string_names += " " + \
+                                last_names[aa].replace(
+                                    '{', '').replace('}', '')
                     else:
-                        string_names+= " and"
-                        first_names=author[aut].bibtex_first_names
-                        last_names=author[aut].last_names
+                        string_names += " and"
+                        first_names = author[aut].bibtex_first_names
+                        last_names = author[aut].last_names
                         for a in range(len(first_names)):
-                            string_names+=" "+first_names[a]
+                            string_names += " "+first_names[a]
                         for aa in range(len(last_names)):
-                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                            string_names += " " + \
+                                last_names[aa].replace(
+                                    '{', '').replace('}', '')
             else:
                 for aut in range(len(author)):
-                    if aut==0:
-                        first_names=author[aut].bibtex_first_names
-                        last_names=author[aut].last_names
+                    if aut == 0:
+                        first_names = author[aut].bibtex_first_names
+                        last_names = author[aut].last_names
                         for a in range(len(first_names)):
-                            if a==0:
-                                string_names=first_names[a]
+                            if a == 0:
+                                string_names = first_names[a]
                             else:
-                                string_names+=" "+first_names[a]
+                                string_names += " "+first_names[a]
                         for aa in range(len(last_names)):
-                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
-                    elif aut==len(author)-1:
+                            string_names += " " + \
+                                last_names[aa].replace(
+                                    '{', '').replace('}', '')
+                    elif aut == len(author)-1:
 
                     else:
-                        string_names+= ","
-                        first_names=author[aut].bibtex_first_names
-                        last_names=author[aut].last_names
+                        string_names += ","
+                        first_names = author[aut].bibtex_first_names
+                        last_names = author[aut].last_names
                         for a in range(len(first_names)):
-                            string_names+=" "+first_names[a]
+                            string_names += " "+first_names[a]
                         for aa in range(len(last_names)):
-                            string_names+=" "+last_names[aa].replace('{','').replace('}','')
+                            string_names += " " + \
+                                last_names[aa].replace(
+                                    '{', '').replace('}', '')
 
             # WRITE DATA ON FILE
             # Get volume

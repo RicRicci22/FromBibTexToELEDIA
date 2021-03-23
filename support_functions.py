@@ -33,7 +33,7 @@ def import_abbreviations(path_abbreviations):
 def get_volume(volume_field):
     if(volume_field != ''):
         # Volume is present
-        return ('vol. ' + volume_field)
+        return ('vol. ' + volume_field+', ')
     else:
         return ''
 
@@ -41,7 +41,7 @@ def get_volume(volume_field):
 def get_number(number_field):
     if(number_field != ''):
         # Number is present
-        return ('no. ' + number_field)
+        return ('no. ' + number_field+', ')
     else:
         return ''
 
@@ -49,6 +49,6 @@ def get_number(number_field):
 def get_pages(page_field):
     if(page_field != ''):
         # Page is present
-        return ('pp. ' + page_field)
+        return ('pp. ' + page_field+', ')
     else:
         return ''
