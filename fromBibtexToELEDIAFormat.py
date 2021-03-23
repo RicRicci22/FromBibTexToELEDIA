@@ -37,13 +37,24 @@ def fromBibtoEledia(arguments):
             doi = support_functions.get_doi(fields['doi'])
             month = support_functions.get_month(fields['month'])
             year = support_functions.get_year(fields['year'])
+<<<<<<< HEAD
+=======
+            f.write(
+                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
+            i += 1
+>>>>>>> 9e92b1df22db13131d6306e2ae0c511a6e39b6b8
             try:
                 j_abbrevation = abbr[fields['journal']]
             except Exception:
+<<<<<<< HEAD
                 j_abbrevation = input(
                     f"Problem: {fields['journal']} abbrevation not found \n Pleas insert the abbrevation:")
                 support_functions.update_journal_abbrevations_file(
                     input_path_abbrevation, fields['journal'], j_abbrevation)
+=======
+                    j_abbrevation=input(f"Problem: {fields['journal']} abbrevation not found \n Pleas insert the abbrevation:")
+                    support_functions.update_journal_abbrevations_file(input_path_abbrevation,fields['journal'],j_abbrevation)
+>>>>>>> 9e92b1df22db13131d6306e2ae0c511a6e39b6b8
             f.write(
                 f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
     f.close()
