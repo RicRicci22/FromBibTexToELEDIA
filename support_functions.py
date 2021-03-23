@@ -30,6 +30,12 @@ def import_abbreviations(path_abbreviations):
     return dict_abbr
 
 
+def import_plain_text(path_plain):
+    file_abbr = open(path_plain, 'r')
+    articles = file_abbr.read().split('\n')
+    return articles
+
+
 def get_volume(volume_field):
     if(volume_field != ''):
         # Volume is present
@@ -54,7 +60,24 @@ def get_pages(page_field):
         return ''
 
 
-# def extract_month():
+def get_year(year_field):
+    if(year_field != ''):
+        # Page is present
+        return (year_field+' ')
+    else:
+        return ''
+
+
+def extract_month(article):
+    month_abbr = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May',
+                  'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
+    subarticles = article.split(',')
+    month = ''
+    for abbr in month_abbr:
+        if(abbr in subarticles[-1]):
+            month = abbr+' '
+
+    return month
 
 
 def get_doi(doi_field):
