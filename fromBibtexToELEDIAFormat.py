@@ -9,9 +9,6 @@ def fromBibtoEledia(arguments):
     input_path = os.path.abspath(arguments[0])
     # Get bib citations
     bib_datas = support_functions.import_citations(input_path)
-    # Get plain text citations
-    input_path_plain = os.path.abspath(arguments[3])
-    list_articles_plain = support_functions.import_plain_text(input_path_plain)
     # Get abbreviations (dictionary key->complete name of journal, value -> abbreviation)
     input_path_abbrevation = os.path.abspath(arguments[2])
     abbr = support_functions.import_abbreviations(input_path_abbrevation)
@@ -19,8 +16,6 @@ def fromBibtoEledia(arguments):
     output_path = arguments[1]
     # create file if it doesn't exist and open it in (over)write mode [it overwrites the file if it already exists]
     f = open(output_path, 'w+')
-    # To iterate on plain articles
-    i = 0
     for bib_data in bib_datas:
         for e in bib_data.entries:
             fields = bib_data.entries[e].fields
@@ -40,19 +35,17 @@ def fromBibtoEledia(arguments):
             number = support_functions.get_number(fields['number'])
             pages = support_functions.get_pages(fields['pages'])
             doi = support_functions.get_doi(fields['doi'])
-            month = support_functions.extract_month(list_articles_plain[i*5])
+            month = support_functions.get_month(fields['month'])
             year = support_functions.get_year(fields['year'])
-            f.write(
-                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
-            i += 1
             try:
-                j_abbrevation=abbr[fields['journal']]
+                j_abbrevation = abbr[fields['journal']]
             except Exception:
-                    j_abbrevation=input(f"Problem: {fields['journal']} abbrevation not found \n Pleas insert the abbrevation:")
-                    support_functions.update_journal_abbrevations_file(input_path_abbrevation,fields['journal'],j_abbrevation)
+                j_abbrevation = input(
+                    f"Problem: {fields['journal']} abbrevation not found \n Pleas insert the abbrevation:")
+                support_functions.update_journal_abbrevations_file(
+                    input_path_abbrevation, fields['journal'], j_abbrevation)
             f.write(
                 f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
-            i += 1
     f.close()
 
 

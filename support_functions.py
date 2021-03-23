@@ -3,8 +3,8 @@ from pybtex.database import parse_string
 
 def import_citations(path_citations):
     # This function creates a list of pybtex object. Every pybtex object is a citation
-    my_file = open(path_citations)
-    strings = my_file.read().split('@')
+    my_file = open(path_citations, 'r', encoding='utf-8')
+    strings = my_file.read().split("@")
     bib_datas = []
     for stringa in strings:
         if stringa == "":
@@ -28,12 +28,6 @@ def import_abbreviations(path_abbreviations):
         dict_abbr[splitted_line[0]] = splitted_line[1][:-1]
 
     return dict_abbr
-
-
-def import_plain_text(path_plain):
-    file_abbr = open(path_plain, 'r')
-    articles = file_abbr.read().split('\n')
-    return articles
 
 
 def get_volume(volume_field):
@@ -62,22 +56,47 @@ def get_pages(page_field):
 
 def get_year(year_field):
     if(year_field != ''):
-        # Page is present
+        # Year is present
         return (year_field+' ')
     else:
         return ''
 
 
-def extract_month(article):
-    month_abbr = ['Jan.', 'Feb.', 'Mar.', 'Apr.', 'May',
-                  'June', 'July', 'Aug.', 'Sept.', 'Oct.', 'Nov.', 'Dec.']
-    subarticles = article.split(',')
-    month = ''
-    for abbr in month_abbr:
-        if(abbr in subarticles[-1]):
-            month = abbr+' '
+def get_month(month_field):
+    if(month_field != ''):
+        # Month is present
+        # Parse month
+        stringa = month_field
+        stringa = stringa.lower()
+        month_parsed = ''
+        if stringa.startswith('jan'):
+            month_parsed = "Jan."
+        elif stringa.startswith('feb'):
+            month_parsed = "Feb."
+        elif stringa.startswith('mar'):
+            month_parsed = "Mar."
+        elif stringa.startswith('apr'):
+            month_parsed = "Apr."
+        elif stringa.startswith('may'):
+            month_parsed = "May"
+        elif stringa.startswith('jun'):
+            month_parsed = "June"
+        elif stringa.startswith('jul'):
+            month_parsed = "July"
+        elif stringa.startswith('aug'):
+            month_parsed = "Aug."
+        elif stringa.startswith('sep'):
+            month_parsed = "Sept."
+        elif stringa.startswith('oct'):
+            month_parsed = "Oct."
+        elif stringa.startswith('nov'):
+            month_parsed = "Nov."
+        elif stringa.startswith('dec'):
+            month_parsed = "Dec."
 
-    return month
+        return (month_parsed+' ')
+    else:
+        return ''
 
 
 def get_doi(doi_field):
@@ -162,8 +181,9 @@ def get_author_name(author):
 
     return string_names
 
+
 def update_journal_abbrevations_file(file, journal_name, abbrevation):
     file_abbr = open(file, 'a')
-    strig_to_append="\n"+journal_name+";"+abbrevation
+    strig_to_append = "\n"+journal_name+";"+abbrevation
     file_abbr.write(strig_to_append)
     file_abbr.close()
