@@ -224,6 +224,6 @@ def rename_files_in_folder(bib_datas, folder):
                         # Only rename
                         os.rename(paper_path, paper_new_path)
                         # Inserting the name in the list
-                        dict_names[paper_name] += 1
+                        dict_names[paper_name] = 1
                 else:
                     print('paper not found!')
