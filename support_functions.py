@@ -81,13 +81,13 @@ def get_month(month_field):
         elif stringa.startswith('may'):
             month_parsed = "May"
         elif stringa.startswith('jun'):
-            month_parsed = "June"
+            month_parsed = "Jun."
         elif stringa.startswith('jul'):
-            month_parsed = "July"
+            month_parsed = "Jul."
         elif stringa.startswith('aug'):
             month_parsed = "Aug."
         elif stringa.startswith('sep'):
-            month_parsed = "Sept."
+            month_parsed = "Sep."
         elif stringa.startswith('oct'):
             month_parsed = "Oct."
         elif stringa.startswith('nov'):
