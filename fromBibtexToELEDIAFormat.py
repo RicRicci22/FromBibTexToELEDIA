@@ -21,11 +21,8 @@ def fromBibtoEledia(arguments):
     # Get abbreviations (dictionary key->complete name of journal, value -> abbreviation)
     abbr = support_functions.import_abbreviations()
 
-<<<<<<< HEAD
     # TRY RENAME FUNCTION
     support_functions.rename_files_in_folder(bib_datas, 'papers')
-=======
->>>>>>> 42076f3f406e2e51afd451b9d89f92cab5bf9f3b
 
     output_path = arguments[1]
     # create file if it doesn't exist and open it in (over)write mode [it overwrites the file if it already exists]
@@ -64,11 +61,7 @@ def fromBibtoEledia(arguments):
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
     arugment = ["prova.txt", "bib_formatted.txt",
                 "journals_abbreviations.txt", "prova_plain.txt"]
     fromBibtoEledia(arugment)
     # fromBibtoEledia(sys.argv[1:])
-=======
-    fromBibtoEledia(sys.argv[1:])
->>>>>>> 42076f3f406e2e51afd451b9d89f92cab5bf9f3b
