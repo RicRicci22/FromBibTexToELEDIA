@@ -188,3 +188,42 @@ def update_journal_abbrevations_file(file, journal_name, abbrevation):
     strig_to_append = "\n"+journal_name+";"+abbrevation
     file_abbr.write(strig_to_append)
     file_abbr.close()
+
+
+def rename_files_in_folder(bib_datas, folder):
+    dict_names = dict()
+    for bib_data in bib_datas:
+        for e in bib_data.entries:
+            fields = bib_data.entries[e].fields
+            try:
+                author = bib_data.entries[e].persons['author']
+            except Exception:
+                try:
+                    author = bib_data.entries[e].persons['editor']
+                except Exception:
+                    print("Error: 'author'/'editor' filed not found")
+                    quit()
+            paper_name = (author[0].last_names[0].replace(
+                '{', '').replace('}', '')+'.'+fields['year'])
+            # GET THE PAPER TITLE
+            paper_title = fields['title']
+            # Get the file in the folder nominated with the same title
+            folder_path = os.path.abspath(folder)
+            for _, _, files in os.walk(folder_path):
+                paper_path = folder_path+'/'+paper_title+'.pdf'
+                if (paper_title+'.pdf') in files:
+                    if(paper_name in dict_names):
+                        # Name already present
+                        char_to_append = chr(95+dict_names[paper_name])
+                        paper_new_path = folder_path+'/'+paper_name+'.'+char_to_append+'.pdf'
+                        # Rename
+                        os.rename(paper_path, paper_new_path)
+                        dict_names[paper_name] += 1
+                    else:
+                        paper_new_path = folder_path+'/'+paper_name+'.pdf'
+                        # Only rename
+                        os.rename(paper_path, paper_new_path)
+                        # Inserting the name in the list
+                        dict_names[paper_name] += 1
+                else:
+                    print('paper not found!')
