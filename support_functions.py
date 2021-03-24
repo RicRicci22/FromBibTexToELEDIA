@@ -204,20 +204,34 @@ def rename_files_in_folder(bib_datas, folder):
                 except Exception:
                     print("Error: 'author'/'editor' filed not found")
                     quit()
+            # GET PAPER NAME (es Oliveri.2019)
             paper_name = (author[0].last_names[0].replace(
                 '{', '').replace('}', '').strip()+'.'+fields['year'])
+            # Check if in name there is a space
+            if (' ' in paper_name):
+                paper_name = paper_name.replace(' ', '_')
             # GET THE PAPER TITLE
             paper_title = fields['title']
             # Get the file in the folder nominated with the same title
             folder_path = os.path.abspath(folder)
-            if os.path.exists(folder_path)!=True:
+            if os.path.exists(folder_path) != True:
                 print("Error: 'papers' folder dosen't exist. \n Please create a papers folder in the same path of the script which contains all the papers downloaded")
+            # Creating a list containing all the papers name (to remove underscores)
+            list_files = []
             for _, _, files in os.walk(folder_path):
-                paper_path = folder_path+'/'+paper_title+'.pdf'
-                if (paper_title+'.pdf') in files:
+                for paper in files:
+                    list_files.append(paper)
+            # Iterate on the list to see if there is the paper
+            found = 0
+            for title in list_files:
+                title_without_underscores = title.replace('_', ' ')
+                if(paper_title.startswith(title_without_underscores[0:round(len(title_without_underscores)/2)])):
+                    found = 1
+                    # Rename this!
+                    paper_path = folder_path+'/'+title
                     if(paper_name in dict_names):
                         # Name already present
-                        char_to_append = chr(95+dict_names[paper_name])
+                        char_to_append = chr(96+dict_names[paper_name])
                         paper_new_path = folder_path+'/'+paper_name+'.'+char_to_append+'.pdf'
                         # Rename
                         os.rename(paper_path, paper_new_path)
@@ -228,5 +242,5 @@ def rename_files_in_folder(bib_datas, folder):
                         os.rename(paper_path, paper_new_path)
                         # Inserting the name in the list
                         dict_names[paper_name] = 1
-                else:
-                    print('paper not found!')
+            if (found == 0):
+                print('You have to rename a paper by yourself!')

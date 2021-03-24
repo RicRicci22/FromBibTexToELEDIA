@@ -27,6 +27,8 @@ def fromBibtoEledia(arguments):
     output_path = arguments[1]
     # create file if it doesn't exist and open it in (over)write mode [it overwrites the file if it already exists]
     f = open(output_path, 'w+')
+    # Creating dictionary for names (to rename with a b c..)
+    dict_names = dict()
     for bib_data in bib_datas:
         for e in bib_data.entries:
             fields = bib_data.entries[e].fields
@@ -39,11 +41,20 @@ def fromBibtoEledia(arguments):
                     print("Error: 'author'/'editor' filed not found")
                     quit()
 
-            # WRITE DATA ON FILE
-            # Get volume
+            # FETCHING DATA
             paper_name = author[0].last_names[0].replace(
                 '{', '').replace('}', '')+'.'+fields['year']
-            print(paper_name)
+            # Check if in name there is a space
+            if (' ' in paper_name):
+                paper_name = paper_name.replace(' ', '_')
+            if(paper_name in dict_names):
+                # Name already present
+                char_to_append = chr(96+dict_names[paper_name])
+                paper_name_new = paper_name+'.'+char_to_append
+                dict_names[paper_name] += 1
+                paper_name = paper_name_new
+            else:
+                dict_names[paper_name] = 1
             string_names = support_functions.get_author_name(author)
             volume = support_functions.get_volume(fields['volume'])
             number = support_functions.get_number(fields['number'])
@@ -58,13 +69,13 @@ def fromBibtoEledia(arguments):
                     f"Problem: {fields['journal']} abbrevation not found \n Pleas insert the abbrevation:")
                 support_functions.update_journal_abbrevations_file(
                     input_path_abbrevation, fields['journal'], j_abbrevation)
+            ####################################################################
+
+            # WRITE DATA ON FILE
             f.write(
                 f"[{paper_name}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
     f.close()
 
 
 if __name__ == '__main__':
-    arugment = ["prova.txt", "bib_formatted.txt",
-                "journals_abbreviations.txt"]
-    fromBibtoEledia(arugment)
-    #fromBibtoEledia(sys.argv[1:])
+    fromBibtoEledia(sys.argv[1:])
