@@ -61,7 +61,7 @@ def fromBibtoEledia(arguments):
 
 
 if __name__ == '__main__':
-    arugment = ["prova.txt", "bib_formatted.txt",
-                "journals_abbreviations.txt", "prova_plain.txt"]
-    fromBibtoEledia(arugment)
-    # fromBibtoEledia(sys.argv[1:])
+    #arugment = ["prova.txt", "bib_formatted.txt",
+    #            "journals_abbreviations.txt", "prova_plain.txt"]
+    #fromBibtoEledia(arugment)
+     fromBibtoEledia(sys.argv[1:])
