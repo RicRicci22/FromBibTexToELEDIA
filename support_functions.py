@@ -209,6 +209,8 @@ def rename_files_in_folder(bib_datas, folder):
             paper_title = fields['title']
             # Get the file in the folder nominated with the same title
             folder_path = os.path.abspath(folder)
+            if os.path.exists(folder_path)!=True:
+                print("Error: 'papers' folder dosen't exist. \n Please create a papers folder in the same path of the script which contains all the papers downloaded")
             for _, _, files in os.walk(folder_path):
                 paper_path = folder_path+'/'+paper_title+'.pdf'
                 if (paper_title+'.pdf') in files:
