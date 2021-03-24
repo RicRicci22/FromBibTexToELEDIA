@@ -109,6 +109,7 @@ def get_doi(doi_field):
 
 
 def get_author_name(author):
+    string_names = ''
     if len(author) == 1:
         first_names = author[0].bibtex_first_names
         last_names = author[0].last_names

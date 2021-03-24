@@ -59,16 +59,12 @@ def fromBibtoEledia(arguments):
                 support_functions.update_journal_abbrevations_file(
                     input_path_abbrevation, fields['journal'], j_abbrevation)
             f.write(
-<<<<<<< HEAD
                 f"[{paper_name}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
-=======
-                f"[{author[0].last_names[0].replace('{','').replace('}','').strip()}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
->>>>>>> 5693845cb3bbcadef65338186560d2853cdd8909
     f.close()
 
 
 if __name__ == '__main__':
-    #arugment = ["prova.txt", "bib_formatted.txt",
-    #            "journals_abbreviations.txt", "prova_plain.txt"]
-    #fromBibtoEledia(arugment)
-     fromBibtoEledia(sys.argv[1:])
+    arugment = ["prova.txt", "bib_formatted.txt",
+                "journals_abbreviations.txt"]
+    fromBibtoEledia(arugment)
+    #fromBibtoEledia(sys.argv[1:])
