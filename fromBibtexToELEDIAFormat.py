@@ -7,10 +7,20 @@ import support_functions
 def fromBibtoEledia(arguments):
     # Get the absolute path of file "prova.txt" that is in folder
     input_path = os.path.abspath(arguments[0])
+
+    if os.path.exists(input_path)!=True:
+        print("Error: input file dosen't exist")
+        quit()
+    
+    if os.path.exists( os.path.abspath('journals_abbreviations.txt'))!=True:
+        print("Error: 'journal_abbrevation.txt' file dosen't exist")
+        quit()
+
     # Get bib citations
     bib_datas = support_functions.import_citations(input_path)
     # Get abbreviations (dictionary key->complete name of journal, value -> abbreviation)
     abbr = support_functions.import_abbreviations()
+
 
     output_path = arguments[1]
     # create file if it doesn't exist and open it in (over)write mode [it overwrites the file if it already exists]
