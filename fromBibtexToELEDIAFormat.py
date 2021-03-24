@@ -8,11 +8,11 @@ def fromBibtoEledia(arguments):
     # Get the absolute path of file "prova.txt" that is in folder
     input_path = os.path.abspath(arguments[0])
 
-    if os.path.exists(input_path)!=True:
+    if os.path.exists(input_path) != True:
         print("Error: input file dosen't exist")
         quit()
-    
-    if os.path.exists( os.path.abspath('journals_abbreviations.txt'))!=True:
+
+    if os.path.exists(os.path.abspath('journals_abbreviations.txt')) != True:
         print("Error: 'journal_abbrevation.txt' file dosen't exist")
         quit()
 
@@ -41,6 +41,9 @@ def fromBibtoEledia(arguments):
 
             # WRITE DATA ON FILE
             # Get volume
+            paper_name = author[0].last_names[0].replace(
+                '{', '').replace('}', '')+'.'+fields['year']
+            print(paper_name)
             string_names = support_functions.get_author_name(author)
             volume = support_functions.get_volume(fields['volume'])
             number = support_functions.get_number(fields['number'])
@@ -56,7 +59,7 @@ def fromBibtoEledia(arguments):
                 support_functions.update_journal_abbrevations_file(
                     input_path_abbrevation, fields['journal'], j_abbrevation)
             f.write(
-                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
+                f"[{paper_name}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
     f.close()
 
 
