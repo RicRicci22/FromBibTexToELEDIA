@@ -56,7 +56,7 @@ def fromBibtoEledia(arguments):
                 support_functions.update_journal_abbrevations_file(
                     input_path_abbrevation, fields['journal'], j_abbrevation)
             f.write(
-                f"[{author[0].last_names[0].replace('{','').replace('}','')}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
+                f"[{author[0].last_names[0].replace('{','').replace('}','').strip()}.{fields['year']}] {string_names}, \"{fields['title']},\" {abbr[fields['journal']]}, {volume}{number}{pages}{month}{year}{doi}\n")
     f.close()
 
 

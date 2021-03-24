@@ -204,7 +204,7 @@ def rename_files_in_folder(bib_datas, folder):
                     print("Error: 'author'/'editor' filed not found")
                     quit()
             paper_name = (author[0].last_names[0].replace(
-                '{', '').replace('}', '')+'.'+fields['year'])
+                '{', '').replace('}', '').strip()+'.'+fields['year'])
             # GET THE PAPER TITLE
             paper_title = fields['title']
             # Get the file in the folder nominated with the same title
