@@ -1,4 +1,5 @@
 from pybtex.database import parse_string
+import os
 
 
 def import_citations(path_citations):
@@ -16,9 +17,9 @@ def import_citations(path_citations):
     return bib_datas
 
 
-def import_abbreviations(path_abbreviations):
-
-    file_abbr = open(path_abbreviations, 'r')
+def import_abbreviations():
+    input_path_abbrevation = os.path.abspath('journals_abbreviations.txt')
+    file_abbr = open(input_path_abbrevation, 'r')
     lines = file_abbr.readlines()
 
     dict_abbr = dict()
