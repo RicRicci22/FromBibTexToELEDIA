@@ -1,4 +1,5 @@
 from pybtex.database import parse_string
+import os
 
 
 def import_citations(path_citations):
@@ -16,9 +17,9 @@ def import_citations(path_citations):
     return bib_datas
 
 
-def import_abbreviations(path_abbreviations):
-
-    file_abbr = open(path_abbreviations, 'r')
+def import_abbreviations():
+    input_path_abbrevation = os.path.abspath('journals_abbreviations.txt')
+    file_abbr = open(input_path_abbrevation, 'r')
     lines = file_abbr.readlines()
 
     dict_abbr = dict()
@@ -80,13 +81,13 @@ def get_month(month_field):
         elif stringa.startswith('may'):
             month_parsed = "May"
         elif stringa.startswith('jun'):
-            month_parsed = "June"
+            month_parsed = "Jun."
         elif stringa.startswith('jul'):
-            month_parsed = "July"
+            month_parsed = "Jul."
         elif stringa.startswith('aug'):
             month_parsed = "Aug."
         elif stringa.startswith('sep'):
-            month_parsed = "Sept."
+            month_parsed = "Sep."
         elif stringa.startswith('oct'):
             month_parsed = "Oct."
         elif stringa.startswith('nov'):

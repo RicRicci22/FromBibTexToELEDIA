@@ -10,8 +10,7 @@ def fromBibtoEledia(arguments):
     # Get bib citations
     bib_datas = support_functions.import_citations(input_path)
     # Get abbreviations (dictionary key->complete name of journal, value -> abbreviation)
-    input_path_abbrevation = os.path.abspath(arguments[2])
-    abbr = support_functions.import_abbreviations(input_path_abbrevation)
+    abbr = support_functions.import_abbreviations()
 
     output_path = arguments[1]
     # create file if it doesn't exist and open it in (over)write mode [it overwrites the file if it already exists]
